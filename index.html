@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MineVerse.chain | Enterprise Cloud Mining</title>
     
-    <!-- Standar SEO Meta Tags -->
     <meta name="description" content="Platform Enterprise Cloud Mining terdesentralisasi. Hubungkan node Anda ke jaringan global secara instan dan mulai menambang aset crypto.">
     <meta name="keywords" content="cloud mining, crypto, bitcoin, mineverse, blockchain, web3, mining node">
     <meta name="author" content="MineVerse.chain">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Meta Tags Pro -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dasbord.mineverse-chain.my.id/">
     <meta property="og:title" content="MineVerse.chain | Enterprise Cloud Mining">
     <meta property="og:description" content="Infrastruktur komputasi desentralisasi dengan telemetri real-time. Hubungkan node Anda ke jaringan global secara instan.">
     <meta property="og:image" content="https://i.ibb.co.com/hFGFXfw1/file-00000000c84471f8b44dea8f24a884ab.png">
 
-    <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://dasbord.mineverse-chain.my.id/">
     <meta property="twitter:title" content="MineVerse.chain | Enterprise Cloud Mining">
@@ -600,10 +597,20 @@
     </footer>
 
     <script>
+        // Logika baru untuk menangkap "?ref=" dan meneruskannya ke Web 2
         function startRedirect(targetUrl) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref');
+            let finalUrl = targetUrl;
+            
+            // Jika ada kode ref di URL saat ini, pasang di URL tujuan
+            if (ref) {
+                finalUrl += finalUrl.includes('?') ? '&ref=' + ref : '?ref=' + ref;
+            }
+
             const overlay = document.getElementById('redirect-overlay');
             overlay.classList.add('active');
-            setTimeout(() => { window.location.href = targetUrl; }, 1500);
+            setTimeout(() => { window.location.href = finalUrl; }, 1500);
         }
 
         let marketChart;
